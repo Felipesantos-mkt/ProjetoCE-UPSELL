@@ -32,6 +32,7 @@
   <div class="video-box" id="videoBox">
     <iframe src="https://play.tynk.ai/p/1ecf1f8f-507d-4084-946c-d3a22b026fa4" style="width:100%;height:100%;border:0;display:block"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div id="playCatcher" onclick="onFirstPlayClick()" style="position:absolute;inset:0;cursor:pointer;background:transparent"></div>
   </div>
 
   <div class="loading-label" id="loadingLabel">Preparando sua condição especial</div>
@@ -153,10 +154,17 @@ const CHECKOUT_URL = "#"; // trocar pelo link de checkout do combo quando vier
 const DOWNSELL_URL = "#"; // trocar pelo link da oferta alternativa (downsell), se houver
 
 /* ================== LIBERAÇÃO DA OFERTA ==================
-   Como o player (Tynk) não tem uma API pública confirmada pra avisar
-   o momento exato do play, a liberação conta a partir de quando a
-   página é aberta (a maioria de quem entra assiste na hora). */
-setTimeout(revealOffer, REVEAL_SECONDS*1000);
+   Como o player (Tynk) é de outro domínio, não dá pra "escutar" o play
+   dele diretamente. Por isso existe uma camada transparente sobre o vídeo
+   que captura só o primeiro toque/clique — nesse momento começamos a
+   contar o tempo, e a camada some, liberando o play de verdade do Tynk. */
+let playClicked = false;
+function onFirstPlayClick(){
+  if(playClicked) return;
+  playClicked = true;
+  document.getElementById('playCatcher').remove(); // libera o clique real no player
+  setTimeout(revealOffer, REVEAL_SECONDS*1000);
+}
 
 /* ================== LOADER ================== */
 window.addEventListener('load', () => {
