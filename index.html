@@ -6,6 +6,34 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Oferta única — Combo 4 em 1 Black | Coleção Eternizar</title>
 <link rel="stylesheet" href="style.css">
+
+<!-- Utmify Pixel -->
+<script>
+  window.pixelId = "6a023d2e3700a6d56e513780";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+
+<!-- Utmify UTMs -->
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xs928i7pu9");
+</script>
 </head>
 <body>
 
@@ -104,13 +132,17 @@
       <div class="new serif">R$397</div>
       <div class="installments">12x de R$41,06 ou R$397 à vista</div>
       <div class="vitalicio">Acesso vitalício</div>
-      <a href="https://pay.kiwify.com.br/ZMh3mHo" class="btn btn-cta" id="ctaCheckout">Sim, quero o Combo 4 em 1 Black</a>
+      <div id="kiwify-upsell-ZMh3mHo" class="kiwify-upsell-wrap" data-upsell-url="" data-downsell-url="">
+        <button id="kiwify-upsell-trigger-ZMh3mHo" class="btn btn-cta">Sim, quero o Combo 4 em 1 Black</button>
+      </div>
       <p class="btn-sub">Pagamento seguro · parcelamento no cartão</p>
     </div>
 
     <div class="downsell">
-      <a href="#" class="btn btn-downsell" id="downsellLink">Não quero, obrigado</a>
+      <div id="kiwify-upsell-cancel-trigger-ZMh3mHo" class="btn btn-downsell">Não quero, obrigado</div>
     </div>
+
+    <script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
 
     <div class="timer-block">
       <div class="lbl serif">Rápido, seu tempo está passando</div>
@@ -144,7 +176,7 @@
 <!-- STICKY FOOTER -->
 <div class="sticky-footer" id="stickyFooter" style="display:none">
   <div class="sf-price"><span class="old">R$1.415</span>R$397</div>
-  <a href="#" class="btn btn-cta" id="ctaSticky">Sim, quero</a>
+  <a href="#kiwify-upsell-ZMh3mHo" class="btn btn-cta" id="ctaSticky">Sim, quero</a>
 </div>
 
 <script>
@@ -187,9 +219,9 @@ function revealOffer(){
 }
 
 /* ================== LINKS DE CHECKOUT / DOWNSELL ================== */
-document.getElementById('ctaCheckout').href = CHECKOUT_URL;
-document.getElementById('ctaSticky').href = CHECKOUT_URL;
-document.getElementById('downsellLink').href = DOWNSELL_URL;
+// Botões de compra e recusa agora são o widget oficial da Kiwify (ids
+// kiwify-upsell-trigger-ZMh3mHo e kiwify-upsell-cancel-trigger-ZMh3mHo).
+// O script deles (upsell.min.js) cuida do clique — não usamos mais href aqui.
 
 /* ================== CRONÔMETRO DE URGÊNCIA ================== */
 const STORAGE_KEY = 'eternizar_upsell_deadline';
